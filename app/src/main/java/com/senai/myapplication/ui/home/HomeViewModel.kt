@@ -4,8 +4,10 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.senai.myapplication.simulator.CanMessage
+import com.senai.myapplication.simulator.VehicleCanBusSimulator
+import com.senai.myapplication.simulator.VehicleSensorSimulator
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.flow.collect
 
 class HomeViewModel : ViewModel() {
 

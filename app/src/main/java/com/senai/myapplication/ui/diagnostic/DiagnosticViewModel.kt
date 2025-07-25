@@ -1,10 +1,10 @@
-package com.senai.myapplication.ui.dashboard
+package com.senai.myapplication.ui.diagnostic
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
-class DashboardViewModel : ViewModel() {
+class DiagnosticViewModel : ViewModel() {
 
     private val _vel = MutableLiveData<String>().apply {
         value = "Velocidade Atual: -- km/h"

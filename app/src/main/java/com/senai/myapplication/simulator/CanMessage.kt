@@ -1,4 +1,4 @@
-package com.senai.myapplication.ui.home
+package com.senai.myapplication.simulator
 
 data class CanMessage(
     val id: Int, // Identificador da mensagem CAN (ex: 0x123 para volume)
