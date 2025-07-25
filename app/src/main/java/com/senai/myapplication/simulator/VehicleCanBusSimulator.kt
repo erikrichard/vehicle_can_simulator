@@ -1,4 +1,4 @@
-package com.senai.myapplication.ui.home
+package com.senai.myapplication.simulator
 
 import android.util.Log
 import kotlinx.coroutines.*
