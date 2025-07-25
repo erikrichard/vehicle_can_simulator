@@ -24,12 +24,6 @@
         android:max="100"
         app:layout_constraintTop_toBottomOf="@id/equalizerSwitch"
         app:layout_constraintStart_toStartOf="parent"
-<<<<<<< HEAD
-        app:layout_constraintTop_toTopOf="parent" />
-
-
-</androidx.constraintlayout.widget.ConstraintLayout>
-=======
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginTop="16dp" />
 
@@ -114,4 +108,3 @@
         app:layout_constraintEnd_toEndOf="parent"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
->>>>>>> 88385c6 (layout)
