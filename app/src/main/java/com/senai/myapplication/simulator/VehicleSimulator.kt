@@ -13,7 +13,7 @@ class VehicleSensorSimulator(private val sensorName: String) {
     fun readSensorData(): Int {
         val data = when (sensorName) {
             "Velocidade" -> random.nextInt(201) // 0-200 km/h
-            "Temperatura Externa" -> random.nextInt(50) - 10 // -10 a 39
+            "Volume" -> random.nextInt(31) // 0 a 30
             "Nível Combustível" -> random.nextInt(101) // 0-100 %
             else -> random.nextInt(101) // Valor genérico 0-100
         }
