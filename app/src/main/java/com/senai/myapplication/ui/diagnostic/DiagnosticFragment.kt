@@ -1,6 +1,7 @@
 package com.senai.myapplication.ui.diagnostic
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -16,6 +17,7 @@ class DiagnosticFragment : Fragment() {
     // This property is only valid between onCreateView and
     // onDestroyView.
     private val binding get() = _binding!!
+    private val TAG = "DiagnosticFragment"
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -30,16 +32,33 @@ class DiagnosticFragment : Fragment() {
 
         val velocity: TextView = binding.speedLabel
         dashboardViewModel.speed.observe(viewLifecycleOwner) {
+            Log.i(TAG, "Velocidade Atual: $it")
             velocity.text = it
         }
         val volume: TextView = binding.canVolumeLabel
         dashboardViewModel.volume.observe(viewLifecycleOwner) {
+            Log.i(TAG, "Volume CAN: $it")
             volume.text = it
         }
+
+        dashboardViewModel.treble.observe(viewLifecycleOwner) {
+            Log.i(TAG, "Treble: $it")
+        }
+
+        dashboardViewModel.mid.observe(viewLifecycleOwner) {
+            Log.i(TAG, "Mid: $it")
+        }
+
+        dashboardViewModel.bass.observe(viewLifecycleOwner) {
+            Log.i(TAG, "Bass: $it")
+        }
+
         binding.readSpeedButton.setOnClickListener {
+            Log.i(TAG, "Solicitando atualização de velocidade")
             dashboardViewModel.updateSpeedData()
         }
         binding.sendCanVolumeButton.setOnClickListener {
+            Log.i(TAG, "Solicitando atualização de volume")
             dashboardViewModel.updateVolumeData()
         }
         return root
