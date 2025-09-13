@@ -127,7 +127,6 @@ class AudioHeadUnit(private val canBus: VehicleCanBusSimulator) {
                     Log.i(TAG, "Treble: ${message.data[0].toInt()}")
                     setTreble(message.data[0].toInt())
                 }
-                canBusSend(CAN_MSG_TREBLE, byteArrayOf(getTreble().toByte()))
             }
 
             CAN_MSG_TREBLE -> {
@@ -140,7 +139,6 @@ class AudioHeadUnit(private val canBus: VehicleCanBusSimulator) {
                     Log.i(TAG, "Bass: ${message.data[0].toInt()}")
                     setBass(message.data[0].toInt())
                 }
-                canBusSend(CAN_MSG_BASS, byteArrayOf(getBass().toByte()))
             }
 
             CAN_MSG_GET_BASS -> {
@@ -153,7 +151,6 @@ class AudioHeadUnit(private val canBus: VehicleCanBusSimulator) {
                     Log.i(TAG, "Mid: ${message.data[0].toInt()}")
                     setMid(message.data[0].toInt())
                 }
-                canBusSend(CAN_MSG_MID, byteArrayOf(getMid().toByte()))
             }
 
             CAN_MSG_GET_MID -> {
