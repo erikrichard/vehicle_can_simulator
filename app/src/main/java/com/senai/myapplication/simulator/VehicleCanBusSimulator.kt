@@ -1,36 +1,31 @@
 package com.senai.myapplication.simulator
 
 import android.util.Log
-import kotlinx.coroutines.*
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.asSharedFlow
+import kotlinx.coroutines.launch
 
 class VehicleCanBusSimulator {
+
     private val TAG = "VehicleCanBusSimulator"
+
     private val messageChannel = Channel<CanMessage>()
     private val scope = CoroutineScope(Dispatchers.Default)
-    // Flow para notificar a UI sobre mensagens CAN recebidas
+
     private val _canMessageFlow = MutableSharedFlow<CanMessage>()
     val canMessageFlow = _canMessageFlow.asSharedFlow()
+
+    private val mAudioHeadUnit = AudioHeadUnit(this)
+
     init {
-        // Inicia um consumidor de mensagens CAN simulado
         scope.launch {
             for (message in messageChannel) {
                 Log.d(TAG, "Mensagem CAN recebida (ID: 0x%X, Dados: %s)".format(message.id, message.data.joinToString { "%02X".format(it) }))
                 // Publica a mensagem para qualquer ouvinte (ex: MainActivity)
                 _canMessageFlow.emit(message)
-                // Simula o processamento da mensagem CAN
-                when (message.id) {
-                    0x123 -> { // Exemplo: ID para mensagem de volume mestre
-                        if (message.data.isNotEmpty()) {
-                            val volume = message.data[0].toInt() and 0xFF // Converte byte para int (0-255)
-                            Log.i(TAG, "Processando mensagem CAN: Novo 89 Volume Mestre: $volume")
-                            // Em um cenário real, isso seria enviado para a HAL de áudio
-                        }
-                    }
-                    // Adicione outros IDs de mensagem CAN para simular diferentes dados do veículo
-                }
             }
         }
     }
@@ -43,13 +38,5 @@ class VehicleCanBusSimulator {
             Log.i(TAG, "Enviando mensagem CAN (ID: 0x%X, Dados: %s)".format(message.id, message.data.joinToString { "%02X".format(it) }))
             messageChannel.send(message)
         }
-    }
-    /**
-     * Para o simulador CAN e libera os recursos.
-     */
-    fun stopSimulator() {
-        scope.cancel()
-        messageChannel.close()
-        Log.d(TAG, "Simulador CAN parado.")
     }
 }
