@@ -18,7 +18,7 @@ class VehicleCanBusSimulator {
     private val _canMessageFlow = MutableSharedFlow<CanMessage>()
     val canMessageFlow = _canMessageFlow.asSharedFlow()
 
-    private val mAudioHeadUnitECU = AudioHeadUnitECU(this)
+    private val mAudioHeadUnit = AudioHeadUnit(this)
 
     init {
         scope.launch {

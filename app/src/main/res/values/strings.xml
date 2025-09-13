@@ -3,4 +3,5 @@
     <string name="title_home">Home</string>
     <string name="title_dashboard">Diagnostic</string>
     <string name="title_notifications">Notifications</string>
+    <string name="equalizer_enabled_text">Equalizer Enabled</string>
 </resources>

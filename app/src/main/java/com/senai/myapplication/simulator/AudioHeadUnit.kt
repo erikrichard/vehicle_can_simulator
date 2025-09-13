@@ -17,7 +17,7 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-class AudioHeadUnitECU(private val canBus: VehicleCanBusSimulator) {
+class AudioHeadUnit(private val canBus: VehicleCanBusSimulator) {
 
     private val TAG = "AudioHeadUnitECU"
 
@@ -28,7 +28,7 @@ class AudioHeadUnitECU(private val canBus: VehicleCanBusSimulator) {
     private val scope = CoroutineScope(Dispatchers.Default)
 
     init {
-        Log.i(TAG, "Iniciando ECU")
+        Log.i(TAG, "Iniciando AHU")
         scope.launch {
             Log.i(TAG, "Iniciando simulador CAN")
             canBus.canMessageFlow.collect { message ->
